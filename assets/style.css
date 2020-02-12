@@ -11,7 +11,7 @@ body {
     background-color: blue;
 }
 
-.panel>.panel-heading {
+.panel .panel-heading {
     background-image: none;
     background-color: #ddd;
     color: grey;

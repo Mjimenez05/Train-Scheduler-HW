@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var config = {
         apiKey: "AIzaSyATWmVcBQbfB9I7ykBltwe4FJPwB-n0BGE",
-        authDomain: "train-scheduler-9c3cf.firebaseapp.com",
+        authDomain: "train-scheduler-9c3cf.firebaseio.com",
         databaseURL: "https://train-scheduler-9c3cf.firebaseio.com",
         projectId: "train-scheduler-9c3cf",
         storageBucket: "train-scheduler-9c3cf.appspot.com",

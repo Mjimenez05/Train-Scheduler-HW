@@ -7,91 +7,96 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Train Schedule APP</title>
-</head>
-
-<body>
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron text-center">
-                    <h1><span class="glyphicon glyphicon-road"></span> Train Schedule</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Current Train Schedule</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="content">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Update</th>
-                                        <th>Train Name</th>
-                                        <th>Destination</th>
-                                        <th>Frequency (min)</th>
-                                        <th>Next Arrival</th>
-                                        <th>Minutes Away</th>
-                                        <th>Remove</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tableContent">
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Add Train</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form id="formID">
-                            <div class="form-group">
-                                <label for="trainName">Train Name</label>
-                                <input type="text" class="form-control" id="trainName" aria-describedby="trainName" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="trainDestination">Destination</label>
-                                <input type="text" class="form-control" id="trainDestination" aria-describedby="trainDestination" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="firstTrainTime">First Train Time (HH:mm - military time)</label>
-                                <input type="text" class="form-control" id="firstTrainTime" aria-describedby="firstTrainTime" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="frequency">Frequency (min)</label>
-                                <input type="number" class="form-control" id="frequency" aria-describedby="frequency" placeholder="">
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Sigmar+One|Special+Elite" rel="stylesheet">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
-    <!-- Added link to Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <!-- Link to Moment.js should go here -->
+
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <!-- Added link to Javascript-->
-    <script type="text/javascript" src="assets/app.js"></script>
+    <title>Train Schedule APP</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="jumbotron text-center bg-success text-white">
+                <h1>Train Times</h1>
+            </div>
+
+            <!-- "Current Train Schedule" Table -->
+
+            <div class="panel panel-success text-success">
+                <div class="panel-heading">
+                    <h3>Current Train Schedule</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>Frequency(min)</th>
+                                <th>Next Arrival</th>
+                                <th>Minutes Away</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Train info goes here! -->
+                        <tbody id="add-row">
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <!-- Form for adding a new train -->
+
+            <div class="panel panel-success text-success">
+                <div class="panel-heading">
+                    <h3>Add Train</h3>
+                </div>
+
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="text">Train Name</label>
+                            <input type="text" class="form-control" id="train-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text">Destination</label>
+                            <input type="text" class="form-control" id="destination">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text">First Train Time (HH:mm - Military Time)</label>
+                            <input type="text" class="form-control" id="first-train">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text">Frequency(min)</label>
+                            <input type="text" class="form-control" id="frequency">
+                        </div>
+
+                        <button type="submit" id="add-train" class="btn btn-success" id="addTrain">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
+
+
+<!-- Link to Moment.js should go here -->
+<!-- <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> -->
+<!-- Added link to Javascript-->
+<script type="text/javascript" src="assets/app.js"></script>
 </body>
 
 </html>

@@ -1,18 +1,21 @@
-.jumbotron {
-    background-color: teal;
-    color: white;
+/*@media screen and (max-width: 640px){
+	container{
+		width: 100%;
+	}
+}*/
+
+panel {
+    width: 100%;
 }
 
-body {
-    background-color: black;
+.jumbotron {
+    background-color: lightgreen;
+    /* Find light color of success panel */
+    color: lightsalmon;
+    padding-top: 1%;
+    padding-bottom: 2%;
 }
 
 .panel-heading {
-    background-color: blue;
-}
-
-.panel .panel-heading {
-    background-image: none;
-    background-color: #ddd;
-    color: grey;
+    padding-top: 0.25%;
 }
